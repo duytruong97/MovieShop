@@ -1,0 +1,12 @@
+C:\Users\sensa\source\repos\MovieShop\ApplicationCore\bin\Debug\net6.0\ApplicationCore.deps.json
+C:\Users\sensa\source\repos\MovieShop\ApplicationCore\bin\Debug\net6.0\ApplicationCore.dll
+C:\Users\sensa\source\repos\MovieShop\ApplicationCore\bin\Debug\net6.0\ref\ApplicationCore.dll
+C:\Users\sensa\source\repos\MovieShop\ApplicationCore\bin\Debug\net6.0\ApplicationCore.pdb
+C:\Users\sensa\source\repos\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.csproj.AssemblyReference.cache
+C:\Users\sensa\source\repos\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sensa\source\repos\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\sensa\source\repos\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.AssemblyInfo.cs
+C:\Users\sensa\source\repos\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\sensa\source\repos\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.dll
+C:\Users\sensa\source\repos\MovieShop\ApplicationCore\obj\Debug\net6.0\ref\ApplicationCore.dll
+C:\Users\sensa\source\repos\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.pdb
