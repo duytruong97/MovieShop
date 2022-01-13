@@ -38,6 +38,7 @@ namespace ApplicationCore.Entities
         public List<MovieCrew> CrewsOfMovie { get; set; }
         public List<Purchase> PurchasesOfMovie { get; set; }
         public List<Favorite> UsersOfFavoriteMovie { get; set; }
+        public List<Review> ReviewsOfMovies     { get; set; }
 
 
 

@@ -31,5 +31,6 @@ namespace ApplicationCore.Entities
 
 
         public List<UserRole> RolesOfUser { get; set; }
+        public List<Review> ReviewsOfUser { get; set;}
     }
 }

@@ -32,8 +32,9 @@ namespace Infrastructure.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Purchase> Purchases { get; set; } 
         public DbSet<Favorite> Favorites { get; set; }
-        public DbSet<Role> Role { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -50,8 +51,19 @@ namespace Infrastructure.Data
             modelBuilder.Entity<Favorite>(ConfigureFavorite);
             modelBuilder.Entity<Role>(ConfigureRole);
             modelBuilder.Entity<UserRole>(ConfigureUserRole);
+            modelBuilder.Entity<Review>(ConfigureReview);
         }
 
+
+        public void ConfigureReview(EntityTypeBuilder<Review> builder)
+        {
+            builder.ToTable("Review");
+            builder.HasKey(r => new { r.UserId, r.MovieId });
+            builder.HasOne(m => m.User).WithMany(m => m.ReviewsOfUser).HasForeignKey(r => r.UserId);
+            builder.HasOne(m => m.Movie).WithMany(m => m.ReviewsOfMovies).HasForeignKey(r => r.MovieId);
+            builder.Property(r => r.Rating).HasPrecision(3, 2);
+
+        }
 
         public void ConfigureUserRole(EntityTypeBuilder<UserRole> builder)
         {
