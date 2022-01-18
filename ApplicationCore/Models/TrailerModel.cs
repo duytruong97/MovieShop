@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Models
 {
-    internal class TrailerModel
+    public class TrailerModel
     {
+        public int Id { get; set; }
+        public int MovieId { get; set; }
+        public String TrailerName { get; set; }
+        public String TrailerUrl { get; set; }
     }
 }

@@ -1,3 +1,10 @@
-﻿<h2> 
-	Display Movie Detail
+﻿@model ApplicationCore.Models.MovieDetailsResponseModel;
+
+<h2> 
+	@Model.Title
+	@foreach (var genre in Model.Genres ){
+		<div>
+			@genre.Name
+		</div>
+	}
 </h2>

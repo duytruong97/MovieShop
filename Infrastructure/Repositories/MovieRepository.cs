@@ -21,6 +21,10 @@ namespace Infrastructure.Repositories
 
         }
 
-        
+        public override async Task<Movie> GetById(int id)
+        {
+            var movie = await _dbContext.Movies.Include(m => m.Trailers).Include(m=>m.GenresOfMovie).ThenInclude(m=>m.Genre).SingleOrDefaultAsync(m=>m.Id == id);
+            return movie;
+        }
     }
 }

@@ -17,6 +17,28 @@ namespace Infrastructure.Services
         {
             _movieRepository = movieRepository;
         }
+
+        public async Task<MovieDetailsResponseModel> GetMovieDetails(int id)
+        {
+            var movieDetails = await _movieRepository.GetById(id);
+            var movieModel = new MovieDetailsResponseModel
+            {
+                Id = movieDetails.Id,
+                Title = movieDetails.Title,
+                PosterUrl = movieDetails.PosterUrl,
+                BackdropUrl = movieDetails.BackdropUrl,
+                ImdbUrl = movieDetails.ImdbUrl
+            };
+            
+
+            foreach (var genre in movieDetails.GenresOfMovie)
+            {
+                movieModel.Genres.Add(new GenreModel { Id = genre.GenreId, Name = genre.Genre.Name});
+            }
+            return movieModel;
+
+        }
+
         public async Task<List<MovieCardResponseModel>> GetTop30GrossingMovies()
         {
             var movies = await _movieRepository.Get30HighestGrossingMovies();
