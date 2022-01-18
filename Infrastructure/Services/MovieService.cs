@@ -17,9 +17,9 @@ namespace Infrastructure.Services
         {
             _movieRepository = movieRepository;
         }
-        public List<MovieCardResponseModel> GetTop30GrossingMovies()
+        public async Task<List<MovieCardResponseModel>> GetTop30GrossingMovies()
         {
-            var movies = _movieRepository.Get30HighestGrossingMovies();
+            var movies = await _movieRepository.Get30HighestGrossingMovies();
 
             // map the data from movies (List<Movies> to movieCards (List<MovieCardReposnseModel>)
 

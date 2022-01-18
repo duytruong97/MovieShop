@@ -23,7 +23,7 @@ namespace MovieShopMVC.Controllers
 
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             // call Movie Service to get topgrossingmovies
             // 3 ways we can pass the data from COntroller/Action methods to the Views
@@ -31,7 +31,7 @@ namespace MovieShopMVC.Controllers
             // 2. ViewBag => dynamic
             // 3. ViewData => object key/value
 
-            var movies = _movieService.GetTop30GrossingMovies();
+            var movies = await _movieService.GetTop30GrossingMovies();
             ViewBag.TotalMovies = movies.Count;
             return View(movies);
         }

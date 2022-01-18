@@ -1,28 +1,26 @@
 ﻿using ApplicationCore.Contracts.Repositories;
 using ApplicationCore.Entities;
 using Infrastructure.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
-    public class MovieRepository : IMovieRepository
+    public class MovieRepository : EfRepository<Movie>, IMovieRepository
     {
-        private readonly MovieShopDbContext _dbContext;
-
-        public MovieRepository(MovieShopDbContext dbContext)
+        public MovieRepository(MovieShopDbContext dbContext) : base(dbContext)
         {
-            _dbContext = dbContext;
         }
-
-        public List<Movie> Get30HighestGrossingMovies()
+        public async Task<List<Movie>> Get30HighestGrossingMovies()
         {
-            // Return movies from database using EF Core and LINQ
-            var movies = _dbContext.Movies.OrderByDescending(m => m.Revenue).Take(30).ToList();
+            // return Movies from Database using EF Core and LINQ
+            // EF Core does the I/O bound operation
+            // EF Core has both async and sync method
+            // Dapper, has both async and sync method
+            var movies = await _dbContext.Movies.OrderByDescending(m => m.Revenue).Take(30).ToListAsync();
             return movies;
+
         }
+
+        
     }
 }

@@ -126,7 +126,7 @@ namespace Infrastructure.Data
             builder.HasOne(m => m.Movie).WithMany(m => m.CrewsOfMovie).HasForeignKey(m => m.MovieId);
             builder.HasOne(m => m.Crew).WithMany(m => m.MoviesOfCrew).HasForeignKey(m => m.CrewId);
             builder.Property(mcr=> mcr.Department).HasMaxLength(128);
-            builder.Property(mcr => mcr.Job).HasMaxLength(128);
+            builder.Property(mcr => mcr.Job).HasMaxLength(128); 
         }
 
         public void ConfigureCrew(EntityTypeBuilder<Crew> builder)

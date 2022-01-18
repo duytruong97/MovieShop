@@ -11,6 +11,6 @@ namespace ApplicationCore.Contracts.Services
     {
         // create these service methods absed on your UI/business requirements
         // Controllers will access these methods
-        List<MovieCardResponseModel> GetTop30GrossingMovies();
+        Task<List<MovieCardResponseModel>> GetTop30GrossingMovies();
     }
 }
