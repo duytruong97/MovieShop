@@ -1,12 +1,24 @@
-﻿using System;
+﻿using ApplicationCore.Contracts.Repositories;
+using ApplicationCore.Entities;
+using Infrastructure.Data;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ApplicationCore.Contracts.Repositories;
+using ApplicationCore.Entities;
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories;
+
+public class UserRepository : EfRepository<User>, IUserRepository
 {
-    internal class UserRepository
+    public UserRepository(MovieShopDbContext dbContext) : base(dbContext)
     {
+    }
+
+    public async Task<User> GetUserByEmail(string email)
+    {
+        var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Email == email);
+        return user;
     }
 }
