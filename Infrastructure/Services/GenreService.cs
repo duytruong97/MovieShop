@@ -18,7 +18,7 @@ namespace Infrastructure.Services
         {
             _genreRepository = genreRepository;
         }
-       
+
 
         public async Task<List<GenreModel>> GetAllGenres()
         {
@@ -34,6 +34,6 @@ namespace Infrastructure.Services
             }
             return genreModel;
         }
-        
+
     }
 }

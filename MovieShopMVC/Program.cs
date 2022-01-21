@@ -1,4 +1,5 @@
 using ApplicationCore.Contracts.Repositories;
+using ApplicationCore.Contracts.Repositories;
 using ApplicationCore.Contracts.Services;
 using ApplicationCore.Entities;
 using Infrastructure.Data;
@@ -6,7 +7,6 @@ using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using MovieShopMVC.Controllers;
 using MovieShopMVC.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,27 +22,22 @@ builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<ICurrentLoginUserService, CurrentLoginUserService>();
 
 
-// Inject HttpContext
+// inject HttpContext
 
 builder.Services.AddHttpContextAccessor();
-
-// Cookie based authentication
-
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
-{
-    options.Cookie.Name = "MovieShopAuthenticationCookie";
-    options.ExpireTimeSpan = TimeSpan.FromHours(2);
-    options.LoginPath = "/Account/Login";
-});   
-
-// inject connectionstring to DbContext
-builder.Services.AddDbContext<MovieShopDbContext>(
-    options =>
+// cookie based authentication
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
     {
-        options.UseSqlServer(builder.Configuration.GetConnectionString("MovieShopDbConnection"));
-    }
-    
-    );
+        options.Cookie.Name = "MovieShopAuthCookie";
+        options.ExpireTimeSpan = TimeSpan.FromHours(2);
+        options.LoginPath = "/account/login";
+    });
+
+// inject connection string to DbContext
+builder.Services.AddDbContext<MovieShopDbContext>(
+    options => { options.UseSqlServer(builder.Configuration.GetConnectionString("MovieShopDbConnection")); }
+);
 
 var app = builder.Build();
 
@@ -58,13 +53,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
-//Middleware in ASP.NET Core
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    "default",
+    "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
