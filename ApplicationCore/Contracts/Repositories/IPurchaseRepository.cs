@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Contracts.Repositories
 {
-    internal interface IPurchaseRepository : IRepository<Purchase>
+    public interface IPurchaseRepository : IRepository<Purchase>
     {
     }
 }

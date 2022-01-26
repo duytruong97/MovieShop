@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Contracts.Repositories
 {
-    internal interface ICastRepository : IRepository<Cast>
+    public interface ICastRepository : IRepository<Cast>
     {
     }
 }

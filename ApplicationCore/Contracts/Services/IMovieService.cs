@@ -13,5 +13,7 @@ namespace ApplicationCore.Contracts.Services
         // Controllers will access these methods
         Task<List<MovieCardResponseModel>> GetTop30GrossingMovies();
         Task<MovieDetailsResponseModel> GetMovieDetails(int id);
+        Task<MovieDetailsResponseModel> GetMovieGenre(int id);
+        Task getByGenre(int id);
     }
 }

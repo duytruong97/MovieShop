@@ -3,27 +3,67 @@
 
 
 
-
 <div class="container">
-  <div class="row">
+    <div class="row">
     <div class="col">
-      @Model.PosterUrl
+      <img src=@Model.PosterUrl alt="Movie Poster style="width:30%;height:30%;">
     </div>
-    <div class="col-6">
-      <h2>
-   @Model.Title
-        </h2>
 
-        @foreach (var genre in Model.Genres)
+    <div class="col">
+      <h2>
+        @Model.Title
+        
+        
+        
+      </h2>
+      <h4>
+          @Model.Tagline
+      </h4>
+
+      
+      <h5><span class="badge bg-secondary">Rating</span></h5>
+
+      <div>
+          @foreach (var genre in Model.Genres)
         {
-            <div>
-                @genre.Name
-            </div>
+            <span class="badge bg-secondary">@genre.Name  </span>
+            
+                
+            
         }
+      </div>
+      <p>@Model.Overview</p>
+      
+
     </div>
     <div class="col">
       <button type="button" class="btn btn-primary">Buy Movie</button>
       <button type="button" class="btn btn-primary">Review</button>
     </div>
   </div>
+
+
+  <div class="row">
+    <div class="col">
+      <h2>
+          Movie Fact
+      </h2>
+    </div>
+    <div class="col">
+      <h2>
+          Casts
+      </h2>
+    </div>
+  </div>
+  
 </div>
+
+
+
+
+
+
+
+
+
+

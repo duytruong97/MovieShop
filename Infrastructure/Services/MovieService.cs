@@ -18,6 +18,11 @@ namespace Infrastructure.Services
             _movieRepository = movieRepository;
         }
 
+        public Task getByGenre(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<MovieDetailsResponseModel> GetMovieDetails(int id)
         {
             var movieDetails = await _movieRepository.GetById(id);
@@ -37,6 +42,11 @@ namespace Infrastructure.Services
             }
             return movieModel;
 
+        }
+
+        public Task<MovieDetailsResponseModel> GetMovieGenre(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<List<MovieCardResponseModel>> GetTop30GrossingMovies()
