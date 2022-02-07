@@ -32,8 +32,17 @@ namespace Infrastructure.Services
                 Title = movieDetails.Title,
                 PosterUrl = movieDetails.PosterUrl,
                 BackdropUrl = movieDetails.BackdropUrl,
-                ImdbUrl = movieDetails.ImdbUrl
-            };
+                ImdbUrl = movieDetails.ImdbUrl,
+                Overview = movieDetails.Overview,
+                Tagline = movieDetails.Tagline,
+                Budget = movieDetails.Budget,
+                Revenue = movieDetails.Revenue,
+                ReleaseDate = movieDetails.ReleaseDate,
+                RunTime = movieDetails.RunTime,
+                Price = movieDetails.Price,
+                
+
+    };
             
 
             foreach (var genre in movieDetails.GenresOfMovie)
@@ -63,6 +72,24 @@ namespace Infrastructure.Services
 
             return movieCards;
             
+        }
+
+        public async Task<List<MovieCardResponseModel>> MoviesSameGenre(int id)
+        {
+            var genreMovies = await _movieRepository.GetMoviesSameGenre(id);
+
+            var genreModel = new List<MovieCardResponseModel>();
+
+            foreach (var movie in genreMovies)
+            {
+                genreModel.Add(new MovieCardResponseModel
+                {
+                    Id = movie.Id,
+                    Title = movie.Title,
+                    PosterUrl = movie.PosterUrl
+                });
+            }
+            return genreModel;
         }
     }
 }

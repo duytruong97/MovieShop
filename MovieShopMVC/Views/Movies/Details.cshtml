@@ -4,24 +4,26 @@
 
 
 <div class="container">
+
+      <div class="row position-relative" style="background:linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ),url(@Model.BackdropUrl); background-size:cover">
     <div class="row">
     <div class="col">
       <img src=@Model.PosterUrl alt="Movie Poster style="width:30%;height:30%;">
     </div>
 
     <div class="col">
-      <h2>
+      <h2 class="text-white">
         @Model.Title
         
         
         
       </h2>
-      <h4>
+      <h4 class="text-white">
           @Model.Tagline
       </h4>
 
       
-      <h5><span class="badge bg-secondary">Rating</span></h5>
+      <h5 class="text-white"><span class="badge bg-secondary">Rating</span></h5>
 
       <div>
           @foreach (var genre in Model.Genres)
@@ -32,7 +34,7 @@
             
         }
       </div>
-      <p>@Model.Overview</p>
+      <p class="text-white">@Model.Overview</p>
       
 
     </div>
@@ -42,6 +44,7 @@
     </div>
   </div>
 
+</div>
 
   <div class="row">
     <div class="col">

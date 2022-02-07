@@ -9,21 +9,25 @@ namespace MovieShop.API.Controllers
     public class CastController : ControllerBase
     {
         private readonly ICastService _castService;
-
         public CastController(ICastService castService)
         {
             _castService = castService;
         }
+
         [HttpGet]
         [Route("{id:int}")]
-        public async Task<IActionResult> CastDetails(int id)
+        public async Task<IActionResult> GetCast(int id)
         {
             var cast = await _castService.GetCastDetails(id);
-            if(cast == null)
+
+            if (cast != null)
+            {
+                return Ok(cast);
+            }
+            else
             {
                 return NotFound();
             }
-            return Ok(cast);
         }
     }
 }

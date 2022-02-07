@@ -15,5 +15,6 @@ namespace ApplicationCore.Contracts.Services
         Task<MovieDetailsResponseModel> GetMovieDetails(int id);
         Task<MovieDetailsResponseModel> GetMovieGenre(int id);
         Task getByGenre(int id);
+        Task<List<MovieCardResponseModel>> MoviesSameGenre(int id);
     }
 }
